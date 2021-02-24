@@ -1,0 +1,17 @@
+Corre el servicio de dynamodb local en el puerto 8080
+(Ejecutar en la carpeta extraida con el script de dynamo local)
+
+$java -Djava.library.path=./DynamoDBLocal_lib -jar DynamoDBLocal.jar --port 8080
+
+Comando para correr el json del proyecto con las definiciones de las tables
+en el server local de dynamodb
+
+$aws dynamodb create-table --cli-input-json file://"C:\Users\Omar.Alejandro.Baez\Documents\Node\proyecto-final\express-dynamodb\mydynamodb\config\posts.json" --endpoint-url http://localhost:8080
+
+Comando para listar las tablas de dynamodb
+
+$aws dynamodb list-tables --endpoint-url http://localhost:8080
+
+Comando para scanear tabla en dynamodb
+
+$aws dynamodb scan     --table-name posts     --endpoint-url http://localhost:8080
