@@ -23,7 +23,7 @@ services:
     environment:
       SERVICES: dynamodb
     ports:
-      - "4569:4569"
+      - "4566:4566"
   setup:
     image: mesosphere/aws-cli
     container_name: api-dynamodb_setup

@@ -6,11 +6,7 @@ sleep 7s
 
 # Create table in dynamo
 
-aws dynamodb create-table --endpoint-url http://localstack:4569 --cli-input-json file://posts.json
-
-aws dynamodb list-tables --endpoint-url http://localhost:4569
-
-
+aws dynamodb create-table --endpoint-url http://localstack:4566 --cli-input-json file://posts.json
 
 # insert data
-# aws dynamodb batch-write-item --request-items file://posts.json --endpoint-url http://localhost:8080
+# aws dynamodb batch-write-item --request-items file://create-posts.json --endpoint-url http://localstack:4566
