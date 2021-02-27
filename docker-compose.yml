@@ -37,6 +37,21 @@ services:
     depends_on:
       - localstack
     command: ["/setup/setup.sh"]
+  setup:
+      build:
+      context: .
+    image: node:10-alpine
+    volumes:
+      - ./src:/app/src
+    container_name: api-dev
+    environment:
+      NODE_ENV: local
+      PORT: 80
+    ports:
+      - "80:3000"
+      - "9229:9229"
+    tty: true
+    entrypoint: ["npm", "run", "dev"]
 networks:
   default:
     name: api-dynamodb
