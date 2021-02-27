@@ -37,7 +37,7 @@ services:
     depends_on:
       - localstack
     command: ["/setup/setup.sh"]
-  setup:
+  dev:
       build:
       context: .
     image: node:10-alpine
