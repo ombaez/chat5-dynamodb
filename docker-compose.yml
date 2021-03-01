@@ -38,7 +38,7 @@ services:
       - localstack
     command: ["/setup/setup.sh"]
   dev:
-      build:
+    build:
       context: .
     image: node:10-alpine
     volumes:
