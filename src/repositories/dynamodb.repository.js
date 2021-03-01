@@ -1,5 +1,5 @@
 const AWS = require("aws-sdk");
-const dynamodb = new AWS.DynamoDB.DocumentClient();
+const dynamodb = new AWS.DynamoDB.DocumentClient({region:"us-east-2"});
 
 const manageRequest = (method, params) => {
   return new Promise((resolve, reject) => {
