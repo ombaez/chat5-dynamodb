@@ -9,7 +9,7 @@
     }
   },
   "host": "",
-  "basePath": "/api",
+  "basePath": "/v1",
   "tags": [
     {
       "name": "Users",

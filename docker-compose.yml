@@ -1,4 +1,4 @@
-version: "3.5"
+version: "3.7"
 services:
   local:
     build:
@@ -11,9 +11,10 @@ services:
       NODE_ENV: local
       AWS_ACCESS_KEY_ID: anykey
       AWS_SECRET_ACCESS_KEY: anysecret
-      AWS_REGION: us-east-2
+      AWS_DEFAULT_REGION: us-east-2
+      PORT: 8080
     ports:
-      - "3000:3000"
+      - "8080:8080"
       - "9229:9229"
     tty: true
     entrypoint: ["npm", "run", "dev"]
@@ -36,9 +37,9 @@ services:
     entrypoint: [""]
     depends_on:
       - localstack
-    command: ["/setup/setup.sh"]
+    command: ["chmod", "+x", "/setup/setup.sh"]
   dev:
-      build:
+    build:
       context: .
     image: node:10-alpine
     volumes:
@@ -47,8 +48,11 @@ services:
     environment:
       NODE_ENV: local
       PORT: 80
+      AWS_ACCESS_KEY_ID: keyId
+      AWS_SECRET_ACCESS_KEY: accesKey
+      AWS_DEFAULT_REGION: us-east-2
     ports:
-      - "80:3000"
+      - "80:80"
       - "9229:9229"
     tty: true
     entrypoint: ["npm", "run", "dev"]

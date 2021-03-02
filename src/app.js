@@ -6,7 +6,10 @@ const AWS = require("aws-sdk");
 const config = require("./config");
 
 if (config.env === "local")
-  AWS.config.dynamodb = { endpoint: "http://localstack:4566" };
+  AWS.config.dynamodb = {
+    endpoint: "http://localstack:4566",
+    region: "us-east-2",
+  };
 
 const router = require("./routes/router");
 const swaggerDocument = require("./swagger.json");

@@ -1,5 +1,5 @@
 const AWS = require("aws-sdk");
-AWS.config.dynamodb = { endpoint: "http://localstack:4566" };
+
 const dynamodb = new AWS.DynamoDB.DocumentClient();
 
 const manageRequest = (method, params) => {

@@ -7,9 +7,9 @@ const version = "v1";
 /* Routes */
 
 // /v1/post
-router.get(`/${version}/post/:id`, postsController.getPost);
-router.post(`/${version}/post`, postsController.insertPost);
-router.put(`/${version}/post/:id`, postsController.updatePost);
-router.delete(`/${version}/post/:id`, postsController.deletePost);
+router.get(`/${version}/posts/:id`, postsController.getPost);
+router.post(`/${version}/posts`, postsController.insertPost);
+router.put(`/${version}/posts/:id`, postsController.updatePost);
+router.delete(`/${version}/posts/:id`, postsController.deletePost);
 
 module.exports = router;
