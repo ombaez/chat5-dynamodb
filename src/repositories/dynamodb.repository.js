@@ -34,6 +34,8 @@ class DynamodbRepository {
 
   // para el save se usa put
   static put(params) {
+
+    console.log(params)
     return manageRequest("put", params);
   }
 }

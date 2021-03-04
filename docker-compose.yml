@@ -12,9 +12,12 @@ services:
       AWS_ACCESS_KEY_ID: anykey
       AWS_SECRET_ACCESS_KEY: anysecret
       AWS_DEFAULT_REGION: us-east-2
-      PORT: 8080
+      DB_MAIN_HOST: mysql
+      DB_MAIN_USER: root
+      DB_MAIN_PASS: root
+      DB_MAIN_NAME: main_db
     ports:
-      - "8080:8080"
+      - "3000:3000"
       - "9229:9229"
     tty: true
     entrypoint: ["npm", "run", "dev"]
@@ -38,6 +41,17 @@ services:
     depends_on:
       - localstack
     command: ["chmod", "+x", "/setup/setup.sh"]
+  mysql:
+    image: mysql:5.7
+    container_name: api-sql
+    ports:
+      - 3306:3306
+    volumes:
+      - ./db/schema-test.sql:/docker-entrypoint-initdb.d/schema-test.sql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USER: test
+      MYSQL_PASSWORD: testpass
   dev:
     build:
       context: .

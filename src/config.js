@@ -1,15 +1,30 @@
-require("dotenv").config();
+require('dotenv').config()
 
-const required = ["NODE_ENV"];
+const required = [
+  'NODE_ENV',
+  'DB_MAIN_HOST',
+  'DB_MAIN_USER',
+  'DB_MAIN_PASS',
+  'DB_MAIN_NAME'
+];
 
-required.forEach((param) => {
+required.forEach(param => {
   if (!process.env[param]) {
     throw new Error(`Environment parameter ${param} is missing`);
   }
 });
 
 const config = {
-  env: process.env["NODE_ENV"],
+  env: process.env['NODE_ENV']
 };
 
-module.exports = config;
+const mainDatabase = {
+  host: process.env['DB_MAIN_HOST'],
+  user: process.env['DB_MAIN_USER'],
+  pass: process.env['DB_MAIN_PASS'],
+  name: process.env['DB_MAIN_NAME']
+};
+
+console.log(mainDatabase, config)
+
+module.exports = { config, mainDatabase };
