@@ -26,12 +26,10 @@ CREATE TABLE IF NOT EXISTS `User` (
 ENGINE = InnoDB;
 
 LOCK TABLES `User` WRITE;
-/*!40000 ALTER TABLE `User` DISABLE KEYS */;
 INSERT INTO `User` (id,userName,email,passwordEncrypted,firstName,lastName,channelsId)
 values
 (1,'userName', 'user@mail.com', '$2a$10$y1YpEHpRV7FH9WE./JA5k.ZWNYiMmifrojBXuOtdNukcPxj2FRWYe', 'Juan', 'Sanchez', '[asdfqwererty,123456789]');
 
-/*!40000 ALTER TABLE `User` ENABLE KEYS */;
 UNLOCK TABLES;
 
 -- -----------------------------------------------------
@@ -47,7 +45,6 @@ CREATE TABLE IF NOT EXISTS `Channels` (
 ENGINE = InnoDB;
 
 LOCK TABLES `Channels` WRITE;
-/*!40000 ALTER TABLE `User` DISABLE KEYS */;
 INSERT INTO `Channels` (id,cuit,comment,date,createdAt)
 values
 ("asd1","334567897",'Comentario de ejemplo','2020-09-09');

@@ -3,18 +3,17 @@ const bodyParser = require("body-parser");
 const app = express();
 const cors = require("cors");
 const swaggerUi = require("swagger-ui-express");
-const AWS = require("aws-sdk");
 const config = require("./config");
-const mainDBRepository = require("../src/repositories/main.repository")
+const mainDBRepository = require("../src/repositories/main.repository");
 
-mainDBRepository.connect()
-app.mainDBRepository = mainDBRepository
+mainDBRepository.connect();
+app.mainDBRepository = mainDBRepository;
 
 if (config.env === "local")
-  AWS.config.dynamodb = {
+  AWS.config.dynamodb({
     endpoint: "http://localstack:4566",
-    region: "us-east-2",
-  };
+    region: config.awsConfig.region,
+  });
 
 const router = require("./routes/router");
 const swaggerDocument = require("./swagger.json");
